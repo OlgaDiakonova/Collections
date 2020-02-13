@@ -12,19 +12,19 @@ public class TestDeposit {
         Service srv = new Service();
         ArrayList<Deposit> deposits = srv.init();
         srv.getPrincipal(deposits);
-//        srv.display(deposits);
-//        srv.remove(deposits);
-//        srv.display(deposits);
-        //Collections.sort(deposits);
+        srv.display(deposits);
+        srv.remove(deposits);
+        srv.display(deposits);
+        Collections.sort(deposits);
 
-//        Collections.sort(deposits, dep.comparator);
-//        srv.display(deposits);
-//
-//        Collections.sort(deposits, dep.comparator1);
-//        srv.display(deposits);
+        Collections.sort(deposits, dep.comparator);
+        srv.display(deposits);
 
-//        NewComparator comp = new NewComparator();
-//        Collections.sort(deposits,comp);
+        Collections.sort(deposits, dep.comparator1);
+        srv.display(deposits);
+
+        NewComparator comp = new NewComparator();
+        Collections.sort(deposits,comp);
         srv.display(deposits);
 
         System.out.println(deposits.get(0).equals(deposits.get(5)));
