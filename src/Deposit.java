@@ -1,7 +1,11 @@
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.*;
 
-public class Deposit implements Comparable<Deposit> {
+public class Deposit implements Comparable<Deposit>, Serializable{
     private String depoType;
     private Date startDate;
     private int dayLong;
@@ -98,14 +102,7 @@ public class Deposit implements Comparable<Deposit> {
         }
     }
 
-    Comparator<Deposit> comparator = new Comparator<Deposit>() {
-        @Override
-        public int compare(Deposit o1, Deposit o2) {
-            return (int)(o1.getSum() - o2.getSum());
-        }
-    };
 
-    Comparator<Deposit> comparator1 = (Deposit o1, Deposit o2) -> (int)(o1.getSum() - o2.getSum());
 }
 
 

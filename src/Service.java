@@ -1,12 +1,12 @@
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
+import java.io.*;
+import java.util.*;
 
-public class Service {
+public class Service implements Comparable<Deposit> {
 
-    public ArrayList<Deposit> init(){
-        ArrayList<Deposit> deposits = new ArrayList<Deposit>();
+    public void init() throws IOException {
+
+        ArrayList<Deposit> deposits = new ArrayList<>();
         Deposit dep1 = new Deposit("Simple", new Date(2013-9-8), 61, 2500.00, 18.0);
         Deposit dep2 = new Deposit("MonthCapit", new Date(2012-12-1), 181, 10000.00, 21.0);
         Deposit dep3 = new Deposit("Simple", new Date(2013-12-11), 30, 5500.00, 15.3);
@@ -21,7 +21,9 @@ public class Service {
         deposits.add(dep5);
         deposits.add(dep6);
 
-        return deposits;
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/Deposits.txt"));
+
+        out.writeObject(deposits);
 
     }
 
@@ -71,5 +73,20 @@ public class Service {
         while(iter.hasNext()){
             System.out.println(iter.next().toString());
         }
+    }
+
+
+    Comparator<Deposit> comparator = new Comparator<Deposit>() {
+        @Override
+        public int compare(Deposit o1, Deposit o2) {
+            return (int)(o1.getSum() - o2.getSum());
+        }
+    };
+
+    Comparator<Deposit> comparator1 = (Deposit o1, Deposit o2) -> (int)(o1.getSum() - o2.getSum());
+
+    @Override
+    public int compareTo(Deposit o) {
+        return 0;
     }
 }
